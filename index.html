@@ -275,7 +275,7 @@ function step(dt){
     const out=balls.filter(b=>!b.dead&&Math.hypot(b.x,b.y)>R+br*.15).sort((a,b)=>Math.hypot(b.x,b.y)-Math.hypot(a.x,a.y));
     for(const b of out){if(state!=='run')break;fall(b)}
     if(state==='run')for(const b of balls){if(b.dead)continue;const q=Math.hypot(b.x,b.y)/R;
-      if(q>.92)b.edge=true;else if(b.edge&&q<.74){b.edge=false;if(aliveN<=60&&nmCool<=0){nmCool=1.1;floats.push({x:b.x,y:b.y,txt:'구사일생!',c:'#3ddc84',t:0,life:1.3,sz:Math.max(br*.5,15/scaleNow)})}}}
+      if(q>.92)b.edge=true;else if(b.edge&&q<.74){b.edge=false;if(aliveN<=60&&nmCool<=0){nmCool=1.1;floats.push({x:b.x,y:b.y,txt:'세이프!',c:'#3ddc84',t:0,life:1.3,sz:Math.max(br*.5,15/scaleNow)})}}}
   }else{
     const lim=Math.max(0,R*.94-br*.2);
     for(const b of balls){if(b.dead)continue;const d=Math.hypot(b.x,b.y);if(d>lim&&d>0){b.x*=lim/d;b.y*=lim/d;const nx=b.x/(lim||1),ny=b.y/(lim||1),vn=b.vx*nx+b.vy*ny;if(vn>0){b.vx-=2*vn*nx;b.vy-=2*vn*ny}}}
